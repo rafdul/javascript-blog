@@ -80,14 +80,21 @@ function myBlog() {
         /* [IN PROGRESS] for each article */
       
           /* [IN PROGRESS] get the article id */
-        const articleSelectorId_s = document.querySelectorAll('.post')
+        const articleSelectorId_s = document.querySelectorAll('.post');
 
         for (let articleSelectorId of articleSelectorId_s) {
             articleSelectorId.getAttribute("id");
-            console.log(articleSelectorId.getAttribute("id"));
+            // console.log(articleSelectorId.getAttribute("id"));
         }
       
           /* find the title element */
+        const articleTitles = document.querySelectorAll('h3.post-title');
+        console.log(articleTitles);
+
+        for (let articleTitle of articleTitles) {
+            articleTitle.innerHTML;
+            console.log(articleTitle.innerHTML);
+        }
       
           /* get the title from the title element */
       
