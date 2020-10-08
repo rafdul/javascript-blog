@@ -28,16 +28,22 @@ const titleClickHandler = function(event){
     const activeArticles = document.querySelectorAll('article.active'); //selektor po elemencie article i kalsie .active
 
     for(let activeArticle of activeArticles){
-    activeArticle.classList.remove('active');
+        activeArticle.classList.remove('active');
     }
 
-    /* get 'href' attribute from the clicked link */
-    clickedElement.getAttribute("href");
+    /* [DONE] get 'href' attribute from the clicked link */
+    const articleSelector = clickedElement.getAttribute("href");
+    // const articleSelector = clickedElement.getAttribute("href").substring(1); //dodałem substring czyli wyrzucenie # z nazwy w href
     console.log(clickedElement.getAttribute("href"));
+    console.log(clickedElement.getAttribute("href").substring(1));
 
-    /* find the correct article using the selector (value of 'href' attribute) */
+    /* [DONE] find the correct article using the selector (value of 'href' attribute) */
+    const targetArticle = document.querySelector(clickedElement.getAttribute("href"));
+    console.log(targetArticle);
 
-    /* add class 'active' to the correct article */
+    /* [DONE] add class 'active' to the correct article */
+    const printedArticle = targetArticle.classList.add('active');
+ 
   }
   
 const links = document.querySelectorAll('.titles a');
