@@ -16,12 +16,13 @@ const titleClickHandler = function(event){
     activeLink.classList.remove('active');
     }
 
-    /* [IN PROGRESS] add class 'active' to the clicked link */
+    /* [DONE] add class 'active' to the clicked link */
+    event.preventDefault();
     const clickedElement = this;
-    this.classList.add('active'); //pętla nie jest potrzebna, bo odniesienie do pojedynczego elementu
+    clickedElement.classList.add('active'); //pętla nie jest potrzebna, bo odniesienie do pojedynczego elementu
 
     console.log('clickedElement:', clickedElement);
-    console.log('clickedElement (with plus): ' + clickedElement);
+    console.log('clickedElement (with plus): ' + clickedElement); //console.log z + pokazuje cały adres elementu
 
     /* [DONE] remove class 'active' from all articles */
     const activeArticles = document.querySelectorAll('article.active'); //selektor po elemencie article i kalsie .active
@@ -31,6 +32,8 @@ const titleClickHandler = function(event){
     }
 
     /* get 'href' attribute from the clicked link */
+    clickedElement.getAttribute("href");
+    console.log(clickedElement.getAttribute("href"));
 
     /* find the correct article using the selector (value of 'href' attribute) */
 
