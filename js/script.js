@@ -61,47 +61,48 @@ function myBlog() {
     link.addEventListener("click", titleClickHandler);
   }
 
-  // // Generowanie listy tytułów
-  // const optArticleSelector = '.post';
-  // const optTitleSelector = '.post-title';
-  // const optTitleListSelector = '.titles';
+  // Generowanie listy tytułów
+  const optArticleSelector = '.post';
+  const optTitleSelector = '.post-title';
+  const optTitleListSelector = '.titles';
 
-  // function generateTitleLinks(){
-  //     console.log('Title Links generated!');
+  function generateTitleLinks(){
+      console.log('Title Links generated!');
 
-  //     /* [DONE] remove contents of titleList */
-  //     function clearTitleList() {
-  //         document.querySelector('.titles').innerHTML = ''; //działa też z textContent
-  //         console.log("clearTitleList made");
-  //     }
-  //     clearTitleList();
+      /* [DONE] remove contents of titleList */
+        const titleList = document.querySelector(optTitleListSelector).innerHTML = '';
+        
+        // function clearTitleList() {
+            //       document.querySelector('.titles').innerHTML = ''; //działa też z textContent
+            //       console.log("clearTitleList made");
+            //   }
+            //   clearTitleList();
 
-  //     /* [IN PROGRESS] for each article */
+      /* [IN PROGRESS] for each article */
+        const articles = document.querySelectorAll(optArticleSelector);
+        for (let article of articles) {
 
-  //       /* [DONE] get the article id */
-  //     const articleSelectorId_s = document.querySelectorAll('.post');
+        /* [DONE] get the article id */
+            const articleId = article.getAttribute("id");
+            console.log(article.getAttribute("id"));
 
-  //     for (let articleSelectorId of articleSelectorId_s) {
-  //         articleSelectorId.getAttribute("id");
-  //         // console.log(articleSelectorId.getAttribute("id"));
-  //     }
+        /* [DONE] find the title element & get the title from the title element*/
+            const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+            console.log(articleTitle);
+        
+        /* [IN PROGRESS] create HTML of the link*/
+            // <a href="#article-1"><span>Article-1</span></a>
+            // <a href="#id"><span>title</span></a>
+            // <a href="#articleId"><span>articleTitle</span></a>
 
-  //       /* [DONE] find the title element */
-  //     const articleTitles = document.querySelectorAll('h3.post-title');
-  //     // console.log(articleTitles);
+            const articleHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+            console.log(articleHTML);
+        }
 
-  //     for (let articleTitle of articleTitles) {
-  //         articleTitle.innerHTML;
-  //         console.log(articleTitle.innerHTML);
-  //     }
 
-  //       /* [IN PROGRESS] get the title from the title element */
+        /* insert link into titleList */
 
-  //       /* create HTML of the link */
-
-  //       /* insert link into titleList */
-
-  // }
-  // generateTitleLinks();
+  }
+  generateTitleLinks();
 }
 myBlog();
