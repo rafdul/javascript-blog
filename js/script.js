@@ -70,13 +70,13 @@ function myBlog() {
       console.log('Title Links generated!');
 
       /* [DONE] remove contents of titleList */
-        const titleList = document.querySelector(optTitleListSelector).innerHTML = '';
+        const titleList = document.querySelector(optTitleListSelector).innerHTML;
         
-        // function clearTitleList() {
-            //       document.querySelector('.titles').innerHTML = ''; //działa też z textContent
-            //       console.log("clearTitleList made");
-            //   }
-            //   clearTitleList();
+        function clearTitleList() {
+                  document.querySelector(optTitleListSelector).innerHTML = ''; //działa też z textContent
+                  console.log("clearTitleList made");
+              }
+              clearTitleList();
 
       /* [IN PROGRESS] for each article */
         const articles = document.querySelectorAll(optArticleSelector);
@@ -90,17 +90,21 @@ function myBlog() {
             const articleTitle = article.querySelector(optTitleSelector).innerHTML;
             console.log(articleTitle);
         
-        /* [IN PROGRESS] create HTML of the link*/
-            // <a href="#article-1"><span>Article-1</span></a>
-            // <a href="#id"><span>title</span></a>
+        /* [DONE] create HTML of the link*/
             // <a href="#articleId"><span>articleTitle</span></a>
 
-            const articleHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-            console.log(articleHTML);
+            const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+            console.log(linkHTML);
+        
+        /* insert link into titleList */
+            // POniższe rozwiązanie jest w skrypcie, ale nie działa???
+            // titleList.innerHTML = titleList.innerHTML + linkHTML;
+            document.querySelector(optTitleListSelector).innerHTML += linkHTML;
+            
         }
 
 
-        /* insert link into titleList */
+     
 
   }
   generateTitleLinks();
