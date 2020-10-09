@@ -67,12 +67,13 @@ function myBlog() {
 
         /* [DONE] remove contents of titleList */
         const titleList = document.querySelector(optTitleListSelector);
+        titleList.innerHTML = "";
 
-        function clearTitleList() {
-            document.querySelector(optTitleListSelector).innerHTML = ""; //działa też z textContent
-            console.log("clearTitleList made");
-        }
-        clearTitleList();
+        // function clearTitleList() {
+        //     document.querySelector(optTitleListSelector).innerHTML = ""; //działa też z textContent
+        //     // console.log("clearTitleList made");
+        // }
+        // clearTitleList();
 
         /* [IN PROGRESS] for each article */
         // let html = '';
@@ -95,10 +96,10 @@ function myBlog() {
 
             /* insert link into titleList */
             // Zaproponowane w skrypcie
-            // titleList.innerHTML = titleList.innerHTML + linkHTML;
+            titleList.innerHTML = titleList.innerHTML + linkHTML;
 
             // szybsza metoda
-            titleList.insertAdjacentHTML('beforeend', linkHTML);
+            // titleList.insertAdjacentHTML('beforeend', linkHTML);
 
             // Też Działa:
             // document.querySelector(optTitleListSelector).innerHTML += linkHTML;
@@ -123,3 +124,5 @@ function myBlog() {
     }
 }
 myBlog();
+
+
