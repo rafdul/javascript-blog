@@ -124,28 +124,27 @@ function myBlog() {
   }
 
   function generateTags(){
-    /* find all articles */
+    /* [DONE] find all articles */
 
 
     const articles = document.querySelectorAll(optArticleSelector);
     for (let article of articles) {
-
     /* START LOOP: for every article: */
 
-      /* find tags wrapper */
+      /* [DONE] find tags wrapper */
       const tagsList = article.querySelector(optArticleTagsSelector);
       tagsList.innerHTML = '';
       // console.log(tagsList.innerHTML);
 
-      /* make html variable with empty string */
+      /* [DONE] make html variable with empty string */
       let linkTagHTML = '';
       console.log(linkTagHTML);
 
-      /* get tags from data-tags attribute */
+      /* [DONE] get tags from data-tags attribute */
       const articleTags = article.getAttribute('data-tags');
       console.log(articleTags);
 
-      /* split tags into array */
+      /* [DONE] split tags into array */
       const articleTagsArrow = articleTags.split(' ');
       console.log(articleTagsArrow);
 
@@ -153,8 +152,8 @@ function myBlog() {
       let html = '';
       for (let articleTag of articleTagsArrow) {
 
-        /* generate HTML of the link */
-        /* add generated code to html variable */
+        /* [DONE] generate HTML of the link */
+        /* [DONE] add generated code to html variable */
         // <a href="#articleId"><span>articleTitle</span></a>
         linkTagHTML = '<li><a href="#' + articleTag + '"><span>' + articleTag + '</span></a></li>';
         console.log(linkTagHTML);
@@ -162,8 +161,8 @@ function myBlog() {
 
       /* END LOOP: for each tag */
       }
-      /* insert HTML of all the links into the tags wrapper */
-      // tagsList.innerHTML = html;
+      /* [DONE] insert HTML of all the links into the tags wrapper */
+      tagsList.innerHTML = html;
 
       // tagsList.innerHTML = linkTagHTML; // dodaje tylko ostatni link i tag
       // tagsList.insertAdjacentHTML('afterbegin', linkTagHTML); // dodaje tylko ostatni link i tag
