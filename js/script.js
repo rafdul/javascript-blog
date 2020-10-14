@@ -125,18 +125,20 @@ function myBlog() {
 
   function generateTags(){
     /* find all articles */
+
+
     const articles = document.querySelectorAll(optArticleSelector);
     for (let article of articles) {
 
     /* START LOOP: for every article: */
 
       /* find tags wrapper */
-      const tagsList = document.querySelector(optArticleTagsSelector);
+      const tagsList = article.querySelector(optArticleTagsSelector);
       tagsList.innerHTML = '';
+      // console.log(tagsList.innerHTML);
 
       /* make html variable with empty string */
-      // <a href="#articleTag"><span>articleTitle</span></a>
-      const linkTagHTML = '';
+      let linkTagHTML = '';
       console.log(linkTagHTML);
 
       /* get tags from data-tags attribute */
@@ -148,17 +150,27 @@ function myBlog() {
       console.log(articleTagsArrow);
 
       /* START LOOP: for each tag */
+      let html = '';
+      for (let articleTag of articleTagsArrow) {
 
         /* generate HTML of the link */
-
         /* add generated code to html variable */
+        // <a href="#articleId"><span>articleTitle</span></a>
+        linkTagHTML = '<li><a href="#' + articleTag + '"><span>' + articleTag + '</span></a></li>';
+        console.log(linkTagHTML);
+        html = html + linkTagHTML;
 
       /* END LOOP: for each tag */
-
+      }
       /* insert HTML of all the links into the tags wrapper */
+      // tagsList.innerHTML = html;
+
+      // tagsList.innerHTML = linkTagHTML; // dodaje tylko ostatni link i tag
+      // tagsList.insertAdjacentHTML('afterbegin', linkTagHTML); // dodaje tylko ostatni link i tag
 
     /* END LOOP: for every article: */
     }
+
   }
 
   generateTags();
