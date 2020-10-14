@@ -60,6 +60,7 @@ function myBlog() {
   const optArticleSelector = '.post';
   const optTitleSelector = '.post-title';
   const optTitleListSelector = '.titles';
+  const optArticleTagsSelector = '.post-tags .list';
 
   function generateTitleLinks() {
     // console.log("Title Links generated!");
@@ -121,5 +122,50 @@ function myBlog() {
   for (let link of links) {
     link.addEventListener('click', titleClickHandler);
   }
+
+  function generateTags(){
+    /* find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+    for (let article of articles) {
+
+    /* START LOOP: for every article: */
+
+      /* find tags wrapper */
+      const tagsList = document.querySelector(optArticleTagsSelector);
+      tagsList.innerHTML = '';
+
+      /* make html variable with empty string */
+      // <a href="#articleTag"><span>articleTitle</span></a>
+      const linkTagHTML = '';
+      console.log(linkTagHTML);
+
+      /* get tags from data-tags attribute */
+      const articleTags = article.getAttribute('data-tags');
+      console.log(articleTags);
+
+      /* split tags into array */
+      const articleTagsArrow = articleTags.split(' ');
+      console.log(articleTagsArrow);
+
+      /* START LOOP: for each tag */
+
+        /* generate HTML of the link */
+
+        /* add generated code to html variable */
+
+      /* END LOOP: for each tag */
+
+      /* insert HTML of all the links into the tags wrapper */
+
+    /* END LOOP: for every article: */
+    }
+  }
+
+  generateTags();
 }
 myBlog();
+
+
+// let sentence = 'idę do domu bo idzie burze';
+// let words = sentence.split(' ');
+// console.log(words);
