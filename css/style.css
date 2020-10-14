@@ -81,7 +81,7 @@ body {
   display: inline-block;
 }
 
-.list-horizontal span {
+.list-horizontal a {
   margin-right: 8px;
 }
 
