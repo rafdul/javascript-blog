@@ -56,11 +56,12 @@ function myBlog() {
   };
 
 
-  // Generowanie listy tytułów
+  // Stałe
   const optArticleSelector = '.post';
   const optTitleSelector = '.post-title';
   const optTitleListSelector = '.titles';
   const optArticleTagsSelector = '.post-tags .list';
+  const optArticleAuthorSelector = '.post-author';
 
   function generateTitleLinks(customSelector = '') {
     // console.log("Title Links generated!");
@@ -244,6 +245,38 @@ function myBlog() {
   }
   addClickListenersToTags();
 
+  function generateAuthors () {
+    /* find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+
+    /* START LOOP: for every article: */
+    for (let article of articles) {
+
+      /* find authors wrapper */
+      const author = article.querySelector(optArticleAuthorSelector);
+      author.innerHTML = '';
+      console.log('Finded author wrapper:', author);
+
+      /* make html variable with empty string */
+      let authorHTML = '';
+
+      /* get authors from data-author attribute */
+      const articleAuthor = article.getAttribute('data-author');
+      console.log('author from attribute:', articleAuthor);
+
+      /* generate HTML of the link with author*/
+      /* add generated code to html variable */
+      // <li><a href="#articleId">articleTitle</a></li>
+      authorHTML = '<a href="#' + articleAuthor + '">' + articleAuthor + '</a>';
+      console.log('Link with author:', authorHTML);
+
+      /* insert HTML of all the links into the authors wrapper */
+      author.innerHTML = authorHTML;
+
+    /* END LOOP: for every article: */
+    }
+  }
+  generateAuthors();
 
 
 }
