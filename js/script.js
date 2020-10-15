@@ -41,9 +41,7 @@ function myBlog() {
     // console.log(clickedElement.getAttribute("href").substring(1));
 
     /* [DONE] find the correct article using the selector (value of 'href' attribute) */
-    const targetArticle = document.querySelector(
-      clickedElement.getAttribute('href')
-    );
+    const targetArticle = document.querySelector(articleSelector);
     console.log(targetArticle);
 
     // Alternatywna opcja z wykorzystaniem elementu zidentyfikowanego po id;
@@ -52,7 +50,7 @@ function myBlog() {
     // console.log(targetArticle);
 
     /* [DONE] add class 'active' to the correct article */
-    const printedArticle = targetArticle.classList.add('active');
+    targetArticle.classList.add('active');
   };
 
 
@@ -62,7 +60,7 @@ function myBlog() {
   const optTitleListSelector = '.titles';
   const optArticleTagsSelector = '.post-tags .list';
 
-  function generateTitleLinks() {
+  function generateTitleLinks(customSelector = '') {
     // console.log("Title Links generated!");
 
     /* [DONE] remove contents of titleList */
@@ -78,7 +76,12 @@ function myBlog() {
     /* [DONE] for each article */
     // let html = '';
 
-    const articles = document.querySelectorAll(optArticleSelector);
+    // W ten sposób uzyskamy np. selektor .post[data-tags~="cat"],
+    // jeśli funkcja została wywołana z argumentem '[data-tags~="cat"]'.
+    // Jeżeli natomiast nie podano żadnego argumentu, to wyszukamy elementy
+    // pasujące do selektora .post, czyli wszystkie artykuły.
+    const articles = document.querySelectorAll(optArticleSelector + customSelector);
+    console.log('optArticleSelektor=', optArticleSelector, 'customSelector=', customSelector);
     for (let article of articles) {
       /* [DONE] get the article id */
       const articleId = article.getAttribute('id');
@@ -180,19 +183,22 @@ function myBlog() {
 
     /* make new constant named "clickedElement" and give it the value of "this" */
     const clickedElement = this;
+    console.log('clickedElement=', clickedElement);
 
     /* make a new constant "href" and read the attribute "href" of the clicked element */
-    const href = document.querySelectorAll('a.active[href^="#tag-"]');
-    console.log(href);
+    const href = clickedElement.getAttribute('href');
+    console.log('href of clickedElement=', href);
 
     /* make a new constant "tag" and extract tag from the "href" constant */
     //metoda proponowana w module
     const tag = href.replace('#tag-', '');
+    console.log('tag from href of clickedElement=', tag);
     //metoda alternatywna
     // const tag = href.substring(5);
 
     /* find all tag links with class active */
-    const tagsActive = document.querySelectorAll('a.active');
+    const tagsActive = document.querySelectorAll('.post-tags a.active');
+    console.log('all tag links with class active=', tagsActive);
 
     /* START LOOP: for each active tag link */
     for (let tagActive of tagsActive) {
@@ -204,24 +210,35 @@ function myBlog() {
     }
 
     /* find all tag links with "href" attribute equal to the "href" constant */
+    const findTags = document.querySelectorAll('a[href="' + href + '"]');
+    console.log('all tag links with attr. "href" equal to const "href" constant=', findTags);
 
     /* START LOOP: for each found tag link */
+    for(let findTag of findTags) {
 
       /* add class active */
+      findTag.classList.add('active');
 
     /* END LOOP: for each found tag link */
+    }
 
     /* execute function "generateTitleLinks" with article selector as argument */
+    // ten selektor oznacza "znajdź elementy, które mają atrybut data-tags, który ma w sobie słowo 'tag'".
+    generateTitleLinks('[data-tags~="' + tag + '"]');
   }
 
   function addClickListenersToTags(){
     /* find all links to tags */
+    const links = document.querySelectorAll('a[href^="#tag-"]');
+    console.log('all links to tags=', links);
 
     /* START LOOP: for each link */
+    for (let link of links) {
 
       /* add tagClickHandler as event listener for that link */
-
+      link.addEventListener('click', tagClickHandler);
     /* END LOOP: for each link */
+    }
   }
 
   addClickListenersToTags();
