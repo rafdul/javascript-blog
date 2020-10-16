@@ -130,6 +130,19 @@ function myBlog() {
   }
   generateTitleLinks();
 
+  function calculateTagsParams (tags) {
+    const params = {
+      min: 999999,
+      max: 0,
+    };
+    for (let tag in tags) {
+      params.max = tags[tag] > params.max ? tags[tag] : params.max;
+      params.min = tags[tag] < params.min ? tags[tag] : params.min;
+      console.log(tag + ' is used ' + tags[tag] + ' times');
+    }
+    return params;
+  }
+
   function generateTags(){
     /* [NEW] create a new variable allTags with an empty object (first it was empty array) */
     let allTags = {};
@@ -195,6 +208,8 @@ function myBlog() {
     const tagList = document.querySelector('.tags');
 
     /* [NEW] create variable for all links HTML code */
+    const tagsParams = calculateTagsParams(allTags);
+    console.log('tagsParams:', tagsParams);
     let allTagsHTML = '';
 
     /* [NEW] START LOOP: for each tag in allTags: */
