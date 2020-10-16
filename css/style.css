@@ -85,6 +85,46 @@ body {
   margin-right: 8px;
 }
 
+.tags {
+  font-size: 38px;
+  line-height: 1;
+}
+
+.tags a {
+  padding-right: 10px;
+  display: inline-block;
+}
+
+.tag-size-5 {
+  font-size: 100%;
+  font-weight: 900;
+  color: #9980FA;
+}
+
+.tag-size-4 {
+  font-size: 80%;
+  font-weight: 700;
+  color: #4a69bd;
+}
+
+.tag-size-3 {
+  font-size: 60%;
+  font-weight: 600;
+  color: #60a3bc;
+}
+
+.tag-size-2 {
+  font-size: 50%;
+  font-weight: 400;
+  color: #079992;
+}
+
+.tag-size-1 {
+  font-size: 40%;
+  font-weight: 300;
+  color: #0652DD;
+}
+
 /* Authors */
 .authors li {
   margin-bottom: 12px;

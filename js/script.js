@@ -227,8 +227,8 @@ function myBlog() {
 
     for(let tag in allTags){
       /* [NEW] generate code of a link and add it to allTagsHTML */
-      allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a>' + ' (' + allTags[tag] + ')</li> ';
-      // allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '</a></li>'+'('+ allTags[tag]+') ';
+      allTagsHTML += '<a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a>';
+      // allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a>' + ' (' + allTags[tag] + ')</li> ';
     }
     /* [NEW] END LOOP: for each tag in allTags: */
 
