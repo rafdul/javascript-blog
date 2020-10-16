@@ -1,5 +1,29 @@
 'use strict';
 
+// Stałe
+const opt = {
+  articleSelector: '.post',
+  titleSelector: '.post-title',
+  titleListSelector: '.titles',
+  articleTagsSelector: '.post-tags .list',
+  articleAuthorSelector: '.post-author',
+  tagsListSelector: '.tags.list',
+  cloudClassCount: 5,
+  cloudClassPrefix: 'tag-size-',
+  authorsListSelector: '.authors',
+};
+
+// const opt.articleSelector = '.post';
+// const opt.titleSelector = '.post-title';
+// const opt.titleListSelector = '.titles';
+// const opt.articleTagsSelector = '.post-tags .list';
+// const opt.articleAuthorSelector = '.post-author';
+// const opt.tagsListSelector = '.tags.list';
+// const opt.cloudClassCount = 5;
+// const opt.cloudClassPrefix = 'tag-size-';
+// const opt.authorsListSelector = '.authors';
+
+
 function myBlog() {
   // document.getElementById('test-button').addEventListener('click', function(){
   //     const links = document.querySelectorAll('.titles a');
@@ -55,27 +79,15 @@ function myBlog() {
     targetArticle.classList.add('active');
   };
 
-
-  // Stałe
-  const optArticleSelector = '.post';
-  const optTitleSelector = '.post-title';
-  const optTitleListSelector = '.titles';
-  const optArticleTagsSelector = '.post-tags .list';
-  const optArticleAuthorSelector = '.post-author';
-  const optTagsListSelector = '.tags.list';
-  const optCloudClassCount = 5;
-  const optCloudClassPrefix = 'tag-size-';
-  const optAuthorsListSelector = '.authors';
-
   function generateTitleLinks(customSelector = '') {
     // console.log("Title Links generated!");
 
     /* [DONE] remove contents of titleList */
-    const titleList = document.querySelector(optTitleListSelector);
+    const titleList = document.querySelector(opt.titleListSelector);
     titleList.innerHTML = '';
 
     // function clearTitleList() {
-    //     document.querySelector(optTitleListSelector).innerHTML = ""; //działa też z textContent
+    //     document.querySelector(opt.titleListSelector).innerHTML = ""; //działa też z textContent
     //     // console.log("clearTitleList made");
     // }
     // clearTitleList();
@@ -87,15 +99,15 @@ function myBlog() {
     // jeśli funkcja została wywołana z argumentem '[data-tags~="cat"]'.
     // Jeżeli natomiast nie podano żadnego argumentu, to wyszukamy elementy
     // pasujące do selektora .post, czyli wszystkie artykuły.
-    const articles = document.querySelectorAll(optArticleSelector + customSelector);
-    console.log('optArticleSelektor=', optArticleSelector, 'customSelector=', customSelector);
+    const articles = document.querySelectorAll(opt.articleSelector + customSelector);
+    console.log('optArticleSelektor=', opt.articleSelector, 'customSelector=', customSelector);
     for (let article of articles) {
       /* [DONE] get the article id */
       const articleId = article.getAttribute('id');
       console.log('id article:', article.getAttribute('id'));
 
       /* [DONE] find the title element & get the title from the title element*/
-      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+      const articleTitle = article.querySelector(opt.titleSelector).innerHTML;
       console.log('title article:', articleTitle);
 
       /* [DONE] create HTML of the link*/
@@ -112,7 +124,7 @@ function myBlog() {
       // titleList.insertAdjacentHTML('beforeend', linkHTML);
 
       // Też Działa:
-      // document.querySelector(optTitleListSelector).innerHTML += linkHTML;
+      // document.querySelector(opt.titleListSelector).innerHTML += linkHTML;
       html = html + linkHTML;
 
       // Inna metoda:
@@ -150,8 +162,8 @@ function myBlog() {
     const normalizedCount = count - params.min;
     const normalizedMax = params.max - params.min;
     const percentage = normalizedCount / normalizedMax;
-    const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
-    return optCloudClassPrefix + classNumber;
+    const classNumber = Math.floor( percentage * (opt.cloudClassCount - 1) + 1 );
+    return opt.cloudClassPrefix + classNumber;
   }
 
 
@@ -162,12 +174,12 @@ function myBlog() {
 
     /* [DONE] find all articles */
 
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(opt.articleSelector);
     for (let article of articles) {
     /* START LOOP: for every article: */
 
       /* [DONE] find tags wrapper */
-      const tagsList = article.querySelector(optArticleTagsSelector);
+      const tagsList = article.querySelector(opt.articleTagsSelector);
       tagsList.innerHTML = '';
       // console.log(tagsList.innerHTML);
 
@@ -217,7 +229,7 @@ function myBlog() {
     console.log(allTags);
 
     /* [NEW] find list of tags in right column */
-    const tagList = document.querySelector(optTagsListSelector);
+    const tagList = document.querySelector(opt.tagsListSelector);
 
     /* [NEW] create variable for all links HTML code */
     const tagsParams = calculateTagsParams(allTags);
@@ -312,14 +324,14 @@ function myBlog() {
     let allAuthors = {};
 
     /* find all articles */
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(opt.articleSelector);
 
     /* START LOOP: for every article: */
 
     for (let article of articles) {
 
       /* find authors wrapper */
-      const author = article.querySelector(optArticleAuthorSelector);
+      const author = article.querySelector(opt.articleAuthorSelector);
       author.innerHTML = '';
       console.log('Finded author wrapper:', author);
 
@@ -357,7 +369,7 @@ function myBlog() {
     console.log('object with authors', allAuthors);
 
     /* [NEW] find list of author in right column */
-    const authorList = document.querySelector(optAuthorsListSelector);
+    const authorList = document.querySelector(opt.authorsListSelector);
 
     /* [NEW] create variable for all links HTML code */
     let allAuthorsHTML = '';
@@ -438,7 +450,6 @@ function myBlog() {
     }
   }
   addClickListenersToAuthors();
-
 
 }
 myBlog();
